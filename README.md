@@ -1,12 +1,13 @@
 # CariSurg Portfolio
 
-This repo contains my CariSurg Healthcare AI Programme work: Week 0 clinical data notebooks and Week 1 research documents.
+This repo contains my CariSurg Healthcare AI Program work: Week 0 clinical data notebooks and Week 1 research documents.
 
 Week 0 covers Mercer General ED data cleaning and visualisation. Week 1 covers AI-assisted emergency triage and patient flow.
 
 ## Purpose
 
-This repo lets CariSurg tutors, clinical reviewers, and technical reviewers inspect my work quickly.
+This repo organises my work from the CariSurg Medtech Pathways Healthcare AI Training Program so tutors can review it clearly. The work focuses on emergency department triage, clinical data cleaning and  AI in healthcare.
+
 
 ## Installation
 
