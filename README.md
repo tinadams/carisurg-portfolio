@@ -1,6 +1,6 @@
 # CariSurg Portfolio
 
-**Artificial Intelligence-assisted emergency department triage project using synthetic clinical data.**
+**AI-assisted emergency department triage project using synthetic clinical data.**
 
 ## About
 
@@ -10,7 +10,8 @@ The project currently uses synthetic Mercer General ED data, with plans to expan
 
 ## Purpose
 
-The purpose of this repository is to organise the project material in a clear and reproducible format.
+The purpose of this repository is to organise the project materials in a clear, reproducible, and reviewable format.
+
 ## Installation
 
 To run the notebooks locally, clone the repository and install the required packages:
@@ -27,29 +28,27 @@ Requires Python 3.x and Jupyter Notebook, JupyterLab, or Google Colab.
 
 ## Usage
 
+The dataset is not included in this repository and must be added locally before running the notebooks.
+
 Place the Mercer General Emergency Department CSV file in the `data/` folder:
 
 ```text
 data/EmergencyTriageDataset_Reduced_Dirty.csv
 ```
 
-Run a notebook from the repository root:
-
-```bash
-jupyter lab notebooks/week_0_day_1_clean_gender_column.ipynb
-```
-
-Recommended file path when running notebooks locally:
+The notebooks are stored in the `notebooks/` folder and use the following relative file path to access the dataset:
 
 ```python
 FILE_PATH = "../data/EmergencyTriageDataset_Reduced_Dirty.csv"
 ```
 
-File path in Google Colab, if the CSV is uploaded alongside the notebook:
+Open a notebook from the repository root using JupyterLab:
 
-```python
-FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
+```bash
+jupyter lab notebooks/week_0_day_1_clean_gender_column.ipynb
 ```
+
+If running the notebooks in Google Colab, upload the CSV file into the Colab session or update the file path as needed.
 
 ## Repository Structure
 
