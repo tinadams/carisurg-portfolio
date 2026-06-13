@@ -1,15 +1,20 @@
 # CariSurg Portfolio
 
-This repo contains my CariSurg Healthcare AI Program work: Week 0 clinical data notebooks and Week 1 research documents.
+**Artificial Intelligence-assisted emergency department triage project using synthetic clinical data.**
 
-Week 0 covers Mercer General ED data cleaning and visualisation. Week 1 covers AI-assisted emergency triage and patient flow.
+## About
+
+This repository contains project materials for a 12-week CariSurg MedTech Pathways pilot focused on developing an AI-assisted emergency department triage system in a Caribbean context.
+
+The project currently uses synthetic Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. It includes Week 0 clinical data notebooks, Week 1 research documents, and the project proposal in a structure that supports clear review by tutors and future collaborators. The repository also serves as an organised foundation for future project development.
 
 ## Purpose
 
-This repo organises my work from the CariSurg Medtech Pathways Healthcare AI Training Program so tutors can review it clearly. The work focuses on emergency department triage, clinical data cleaning and  AI in healthcare.
-
+The purpose of this repository is to organise the project work in a clear, reproducible, and audit-ready format. A reviewer should be able to understand the project focus, locate the relevant notebooks and documents, and identify how the repository is structured within 60 seconds.
 
 ## Installation
+
+To run the notebooks locally, clone the repository and install the required packages:
 
 ```bash
 git clone https://github.com/tinadams/carisurg-portfolio.git
@@ -19,29 +24,29 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Requires Python 3.x and Jupyter or Google Colab.
+Requires Python 3.x and Jupyter Notebook, JupyterLab, or Google Colab.
 
 ## Usage
 
-Place the Mercer General ED CSV in `data/`:
+Place the Mercer General Emergency Department CSV file in the `data/` folder:
 
 ```text
 data/EmergencyTriageDataset_Reduced_Dirty.csv
 ```
 
-Run a notebook from the repo root:
+Run a notebook from the repository root:
 
 ```bash
 jupyter lab notebooks/week_0_day_1_clean_gender_column.ipynb
 ```
 
-File path inside notebooks:
+Recommended file path when running notebooks locally:
 
 ```python
 FILE_PATH = "../data/EmergencyTriageDataset_Reduced_Dirty.csv"
 ```
 
-File path in Google Colab (CSV alongside notebook):
+File path in Google Colab, if the CSV is uploaded alongside the notebook:
 
 ```python
 FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
@@ -53,6 +58,7 @@ FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
 carisurg-portfolio/
 ├── README.md
 ├── LICENSE
+├── .gitignore
 ├── requirements.txt
 ├── notebooks/
 │   ├── week_0_day_1_clean_gender_column.ipynb
@@ -61,15 +67,28 @@ carisurg-portfolio/
 ├── docs/
 │   ├── week_1_memo.pdf
 │   └── week_1_proposal.pdf
-└── data/
+├── data/
+│   └── README.md
+└── src/
     └── README.md
 ```
 
-## Contributing
+## Folder Guide
 
-Individual portfolio work. Major edits go through a feature branch and pull request. 
-Pull requests welcome.
+* `notebooks/` contains Week 0 Jupyter notebooks for clinical data cleaning and visualisation.
+* `docs/` contains Week 1 research and proposal documents.
+* `data/` is reserved for the Mercer General Emergency Department dataset. The dataset is not included in this repository.
+* `src/` is reserved for reusable Python modules and scripts that may be developed later in the programme.
+* `requirements.txt` lists the Python libraries needed to run the notebooks.
+
+## Notes on Data
+
+The dataset used in this project is synthetic and is not committed to the repository. When running the notebooks locally, the dataset should be placed in the `data/` folder.
+
+## Version Control Workflow
+
+Major edits are made through a feature branch and merged into `main` using a pull request. This keeps the project history clear and supports a more reviewable workflow.
 
 ## Licence
 
-MIT. See `LICENSE`.
+This project is licensed under the MIT Licence. See `LICENSE` for details.
