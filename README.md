@@ -67,7 +67,8 @@ carisurg-portfolio/
 
 ## Contributing
 
-Individual portfolio work. Major edits go through a feature branch and pull request.
+Individual portfolio work. Major edits go through a feature branch and pull request. 
+Pull requests welcome.
 
 ## Licence
 
