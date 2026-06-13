@@ -4,14 +4,13 @@
 
 ## About
 
-This repository contains project materials for a 12-week CariSurg MedTech Pathways pilot focused on developing an AI-assisted emergency department triage system in a Caribbean context.
+This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage system in a Caribbean context, where triage decisions often rely on manual clinical assessment and staff judgement.
 
-The project currently uses synthetic Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. It includes Week 0 clinical data notebooks, Week 1 research documents, and the project proposal in a structure that supports clear review by tutors and future collaborators. The repository also serves as an organised foundation for future project development.
+The project currently uses synthetic Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. The repository includes Week 0 clinical data notebooks, Week 1 research documents, and the project proposal as an organised foundation for future project development.
 
 ## Purpose
 
-The purpose of this repository is to organise the project work in a clear, reproducible, and audit-ready format. A reviewer should be able to understand the project focus, locate the relevant notebooks and documents, and identify how the repository is structured within 60 seconds.
-
+The purpose of this repository is to organise the project material in a clear and reproducible format.
 ## Installation
 
 To run the notebooks locally, clone the repository and install the required packages:
