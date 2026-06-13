@@ -58,8 +58,8 @@ carisurg-portfolio/
 │   ├── week_0_day_2_clean_fio2_column.ipynb
 │   └── week_0_day_3_data_visualisation.ipynb
 ├── docs/
-│   ├── week_1_memo.docx
-│   └── week_1_proposal.docx
+│   ├── week_1_memo.pdf
+│   └── week_1_proposal.pdf
 └── data/
     └── README.md
 ```
