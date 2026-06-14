@@ -28,27 +28,20 @@ Requires Python 3.x and Jupyter Notebook, JupyterLab, or Google Colab.
 
 ## Usage
 
-The dataset is not included in this repository and must be added locally before running the notebooks.
+The dataset is not included in this repository, you must add it before running the notebooks.
 
-Place the Mercer General Emergency Department CSV file in the `data/` folder:
-
-```text
-data/EmergencyTriageDataset_Reduced_Dirty.csv
-```
-
-The notebooks are stored in the `notebooks/` folder and use the following relative file path to access the dataset:
+All notebooks currently look for the dataset using this file path:
 
 ```python
-FILE_PATH = "../data/EmergencyTriageDataset_Reduced_Dirty.csv"
+FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
 ```
 
-Open a notebook from the repository root using JupyterLab:
+This means the CSV file needs to be in the same place where the notebook is being run.
 
-```bash
-jupyter lab notebooks/week_0_day_1_clean_gender_column.ipynb
-```
+If you are using Google Colab, upload the CSV file into the Colab session before running the notebook.
 
-If running the notebooks in Google Colab, upload the CSV file into the Colab session or update the file path as needed.
+If you are running the notebooks locally, put the CSV file in the same folder as the notebook, or update the file path if you store it somewhere else.
+
 
 ## Repository Structure
 
