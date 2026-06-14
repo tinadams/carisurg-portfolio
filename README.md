@@ -6,7 +6,7 @@
 
 This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage system in a Caribbean context, where triage decisions often rely on manual clinical assessment and staff judgement.
 
-The project currently uses synthetic Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. The repository includes Week 0 clinical data notebooks, Week 1 research documents and project proposal, as an organised foundation for future project development.
+The project currently uses synthetic Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. This repository keeps the Week 0 notebooks, Week 1 research documents, and project proposal organised in one place for future project work.
 
 ## Purpose
 
