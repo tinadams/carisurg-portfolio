@@ -77,7 +77,7 @@ Major edits are made through a feature branch and merged into `main` using a pul
 
 ## Contributing
 
-This repository is part of the CariSurg Healthcare AI Program coursework. Contributions are not currently expected, but suggestions for improvement are welcome.
+This repository is part of the CariSurg Healthcare AI Program coursework. Contributions are not currently expected but suggestions for improvement are welcome.
 
 ## Licence
 
