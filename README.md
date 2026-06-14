@@ -4,9 +4,9 @@
 
 ## About
 
-This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage system in a Caribbean context, where triage decisions often rely on manual clinical assessment and staff judgement.
+This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage system in a Caribbean context, where triage decisions often rely on manual clinical judgement.
 
-The project currently uses synthetic Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. This repository keeps the Week 0 notebooks, Week 1 research documents, and project proposal organised in one place for future project work.
+The project currently uses de-identified Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. This repository keeps the Week 0 notebooks, Week 1 research documents, and project proposal organised in one place for future project work.
 
 ## Purpose
 
@@ -67,17 +67,17 @@ carisurg-portfolio/
 
 * `notebooks/` contains Week 0 Jupyter notebooks for clinical data cleaning and visualisation.
 * `docs/` contains Week 1 research and proposal documents.
-* `data/` is reserved for the Mercer General Emergency Department dataset. The dataset is not included in this repository.
-* `src/` is reserved for reusable Python modules and scripts that may be developed later in the programme.
+* `data/` is reserved for future dataset storage. The dataset is not currently included in this repository.
+* `src/` is reserved for reusable Python modules and scripts that may be developed later in the program.
 * `requirements.txt` lists the Python libraries needed to run the notebooks.
-
-## Notes on Data
-
-The dataset used in this project is synthetic and is not committed to the repository. When running the notebooks locally, the dataset should be placed in the `data/` folder.
 
 ## Version Control Workflow
 
 Major edits are made through a feature branch and merged into `main` using a pull request. This keeps the project history clear and supports a more reviewable workflow.
+
+## Contributing
+
+This repository is part of the CariSurg Healthcare AI Program coursework. Contributions are not currently expected, but suggestions for improvement are welcome.
 
 ## Licence
 
