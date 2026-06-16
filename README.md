@@ -56,6 +56,9 @@ carisurg-portfolio/
 │   ├── week_0_day_2_clean_fio2_column.ipynb
 │   └── week_0_day_3_data_visualisation.ipynb
 ├── docs/
+│   ├── week_0_day_4_Vital_Sign_Description_(BP).pdf
+│   ├── week_0_day_5_Vital_Sign_Description_(SpO2).pdf
+│   ├── week_0_day_6_Triage_Pseudocode.pdf
 │   └── week_1_proposal.pdf
 ├── data/
 │   └── README.md
