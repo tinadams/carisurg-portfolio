@@ -4,9 +4,9 @@
 
 ## About
 
-This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage system in a Caribbean context, where triage decisions often rely on manual clinical judgement.
+This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage tool in a Caribbean context, where triage decisions often rely on manual clinical judgement.
 
-The project currently uses de-identified Mercer General ED data, with plans to expand to a larger dataset as the pilot develops. This repository keeps the Week 0 notebooks, Week 1 research documents, and project proposal organised in one place for future project work.
+The project currently uses de-identified Mercer General emergency department data, with plans to expand to a larger dataset as the pilot develops. This repository organises Week 0 notebooks, Week 0 deliverables, and Weeks 1 and 2 research proposal documents in one place for future project work.
 
 ## Purpose
 
@@ -56,7 +56,11 @@ carisurg-portfolio/
 │   ├── week_0_day_2_clean_fio2_column.ipynb
 │   └── week_0_day_3_data_visualisation.ipynb
 ├── docs/
-│   └── week_1_proposal.pdf
+│   ├── week_0_day_4_Vital_Sign_Description_(BP).pdf
+│   ├── week_0_day_5_Vital_Sign_Description_(SpO2).pdf
+│   ├── week_0_day_6_Triage_Pseudocode.pdf
+│   ├── week_1_proposal.pdf
+│   └── week_2_proposal.pdf
 ├── data/
 │   └── README.md
 └── src/
@@ -66,7 +70,7 @@ carisurg-portfolio/
 ## Folder Guide
 
 * `notebooks/` contains Week 0 Jupyter notebooks for clinical data cleaning and visualisation.
-* `docs/` contains Week 1 research and proposal documents.
+* `docs/` contains Week 0 deliverables and Weeks 1 and 2 research proposal documents.
 * `data/` is reserved for future dataset storage. The dataset is not currently included in this repository.
 * `src/` is reserved for reusable Python modules and scripts that may be developed later in the program.
 * `requirements.txt` lists the Python libraries needed to run the notebooks.
