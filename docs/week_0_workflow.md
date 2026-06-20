@@ -17,13 +17,13 @@ E -->|Patient appears lower risk| H[Fast track or minor care<br/>Patient goes to
 
 E -->|After ED review| I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
-AI1[[AI support point 1<br/>Predict expected patient arrivals<br/><br/>What AI could do:<br/>Use past ED data to predict when busy periods are likely.<br/>For example, it could warn about high demand during certain shifts,<br/>weekends, holiday periods, or seasonal surges.<br/><br/>How this helps nurses:<br/>It gives the ED more time to prepare staffing,<br/>space, and beds before the rush happens.]]
+AI1[[AI plug in 1<br/>Predict expected patient arrivals<br/><br/>What AI could do:<br/>Use past ED data to predict when busy periods are likely.<br/>For example, it could warn about high demand during certain shifts,<br/>weekends, holiday periods, or seasonal surges.<br/><br/>How this helps nurses:<br/>It gives the ED more time to prepare staffing,<br/>space, and beds before the rush happens.]]
 
-AI2[[AI support point 2<br/>Suggest, not assign, triage priority<br/><br/>What AI could do:<br/>Review the patient's complaint, vitals, age, pain score,<br/>and risk factors, then give a second-check alert such as<br/>'consider urgent review' with a short reason.<br/><br/>How this helps nurses:<br/>It supports judgment, reduces missed red flags,<br/>and may help less experienced nurses during busy shifts.]]
+AI2[[AI plug in 2<br/>Suggest, not assign, triage priority<br/><br/>What AI could do:<br/>Review the patient's complaint, vitals, age, pain score,<br/>and risk factors, then give a second-check alert such as<br/>'consider urgent review' with a short reason.<br/><br/>How this helps nurses:<br/>It supports judgment, reduces missed red flags,<br/>and may help less experienced nurses during busy shifts.]]
 
-AI3[[AI support point 3<br/>Predict which patients may need admission<br/><br/>What AI could do:<br/>Use triage information to flag patients who may be likely<br/>to need hospital admission, observation, or transfer.<br/><br/>How this helps nurses:<br/>It gives nurses and bed managers an early heads-up<br/>so they can start planning sooner.]]
+AI3[[AI plug in 3<br/>Predict which patients may need admission<br/><br/>What AI could do:<br/>Use triage information to flag patients who may be likely<br/>to need hospital admission, observation, or transfer.<br/><br/>How this helps nurses:<br/>It gives nurses and bed managers an early heads-up<br/>so they can start planning sooner.]]
 
-AI4[[AI support point 4<br/>Flag patients who may get worse while waiting<br/><br/>What AI could do:<br/>Identify waiting patients whose vitals, symptoms, age,<br/>or risk factors suggest they may need reassessment sooner.<br/><br/>How this helps nurses:<br/>It acts as a safety net and helps nurses know<br/>who may need to be rechecked first.]]
+AI4[[AI plug in 4<br/>Flag patients who may get worse while waiting<br/><br/>What AI could do:<br/>Identify waiting patients whose vitals, symptoms, age,<br/>or risk factors suggest they may need reassessment sooner.<br/><br/>How this helps nurses:<br/>It acts as a safety net and helps nurses know<br/>who may need to be rechecked first.]]
 
 PRE[ED prepares for expected demand]
 
