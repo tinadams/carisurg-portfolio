@@ -1,7 +1,7 @@
 ```mermaid
 flowchart TD
 
-A[Patient arrival<br/>Walk-in or ambulance] --> B[Registration<br/>Clerk records patient details<br/>and reason for visit]
+A[Patient arrival<br/>Walk-in or ambulance] --> B[Registration<br/>Nurse records patient details<br/>and reason for visit]
 
 B --> C[Vitals taken<br/>Blood pressure, heart rate,<br/>breathing rate, oxygen level,<br/>temperature, and pain score]
 
