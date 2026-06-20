@@ -25,7 +25,7 @@ AI3[[AI support point 3<br/>Predict which patients may need admission<br/><br/>W
 
 AI4[[AI support point 4<br/>Flag patients who may get worse while waiting<br/><br/>What AI could do:<br/>Identify waiting patients whose vitals, symptoms, age,<br/>or risk factors suggest they may need reassessment sooner.<br/><br/>How this helps nurses:<br/>It acts as a safety net and helps nurses know<br/>who may need to be rechecked first.]]
 
-PRE[Before the shift<br/>ED prepares for expected demand]
+PRE[ED prepares for expected demand]
 
 AI1 -.-> PRE
 PRE -.-> A
