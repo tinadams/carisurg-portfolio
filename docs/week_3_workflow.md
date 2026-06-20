@@ -25,8 +25,6 @@ AI3[[Plug-in 3 · End of triage<br/>Admission-likelihood flag<br/><br/>In: age, 
 
 AI4[[Plug-in 4 · Waiting area<br/>Reassessment safety net<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: reassessment reminder for higher-risk waiting patients<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
 
-AI5[[Plug-in 5 · Handoff or bed-flow planning<br/>Admission-risk signal<br/><br/>In: admission-risk flags, waiting-room load, patients awaiting review, bed availability if known<br/>Out: normal, rising, or high admission pressure<br/>Human action: charge nurse, clinician, or bed manager uses signal during handoff or bed planning]]
-
 PRE[ED prepares for expected demand]
 
 AI1 -.-> PRE
