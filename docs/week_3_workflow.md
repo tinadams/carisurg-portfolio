@@ -17,13 +17,15 @@ E -->|Patient appears lower risk| H[Fast track or minor care<br/>Patient goes to
 
 E -->|After ED review| I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
-AI1[[AI plug in 1<br/>Predict expected patient arrivals<br/><br/>What AI could do:<br/>Use past ED data to predict when busy periods are likely.<br/>For example, it could warn about high demand during certain shifts,<br/>weekends, holiday periods, or seasonal surges.<br/><br/>How this helps nurses:<br/>It gives the ED more time to prepare staffing,<br/>space, and beds before the rush happens.]]
+AI1[[Plug-in 1 · Before the shift<br/>Patient arrival forecast<br/><br/>In: past ED arrivals, day, time, season, holidays, weather<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, space, fast-track, and beds]]
 
-AI2[[AI plug in 2<br/>Suggest, not assign, triage priority<br/><br/>What AI could do:<br/>Review the patient's complaint, vitals, age, pain score,<br/>and risk factors, then give a second-check alert such as<br/>'consider urgent review' with a short reason.<br/><br/>How this helps nurses:<br/>It supports judgment, reduces missed red flags,<br/>and may help less experienced nurses during busy shifts.]]
+AI2[[Plug-in 2 · After vitals recorded<br/>Triage priority second check<br/><br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: second-check alert with reason<br/>Human action: triage nurse compares alert with their own assessment]]
 
-AI3[[AI plug in 3<br/>Predict which patients may need admission<br/><br/>What AI could do:<br/>Use triage information to flag patients who may be likely<br/>to need hospital admission, observation, or transfer.<br/><br/>How this helps nurses:<br/>It gives nurses and bed managers an early heads-up<br/>so they can start planning sooner.]]
+AI3[[Plug-in 3 · End of triage<br/>Admission-likelihood flag<br/><br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: likely admission, observation, transfer, or discharge risk flag<br/>Human action: nurse or charge nurse starts earlier escalation or bed planning]]
 
-AI4[[AI plug in 4<br/>Flag patients who may get worse while waiting<br/><br/>What AI could do:<br/>Identify waiting patients whose vitals, symptoms, age,<br/>or risk factors suggest they may need reassessment sooner.<br/><br/>How this helps nurses:<br/>It acts as a safety net and helps nurses know<br/>who may need to be rechecked first.]]
+AI4[[Plug-in 4 · Waiting area<br/>Reassessment safety net<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: reassessment reminder for higher-risk waiting patients<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
+
+AI5[[Plug-in 5 · Handoff or bed-flow planning<br/>Admission-risk signal<br/><br/>In: admission-risk flags, waiting-room load, patients awaiting review, bed availability if known<br/>Out: normal, rising, or high admission pressure<br/>Human action: charge nurse, clinician, or bed manager uses signal during handoff or bed planning]]
 
 PRE[ED prepares for expected demand]
 
