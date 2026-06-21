@@ -21,7 +21,7 @@ AI1[[Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, se
 
 AI2[[Plug-in 2: AI Triage result<br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: Triage level recommendation with reason<br/>Human action: triage nurse compares alert with their own assessment, AI result acts as second opinion]]
 
-AI3[[Plug-in 3: Admission-likelihood flag<br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: likely admission, observation, transfer, or discharge flag<br/>Human action: nurse starts earlier escalation, transfer or bed planning]]
+AI3[[Plug-in 3: Admission-likelihood flag<br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: admission prediction, observation, transfer, or discharge flag<br/>Human action: nurse starts earlier escalation, transfer or bed planning]]
 
 AI4[[Plug-in 4 · Reassessment flag<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: updated condition status and alert if worsened<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
 
