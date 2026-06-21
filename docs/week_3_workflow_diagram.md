@@ -9,17 +9,17 @@ C --> D[Triage nurse assessment<br/>Nurse reviews symptoms,<br/>history, and vit
 
 D --> E{Triage pathway decision}
 
-E -->|Patient is critical or unstable| F[Immediate care - Patient goes to resuscitation<br/>or urgent care area]
+E -->|Patient is critical or unstable| F[Immediate care:<br/>Patient goes to resuscitation<br/>or urgent care area]
 
-E -->|Patient needs more ED assessment| G[Care area or waiting area - Patient waits for ED clinician review]
+E -->|Patient needs more ED assessment| G[Care area or waiting area:<br/>Patient waits for ED clinician review]
 
 E -->|Patient appears lower risk| H[Patient receives lower-acuity assessment<br/>and treatment if needed]
 
-H --> I[Disposition<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+H --> I[Disposition:<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
-F --> I[Disposition<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+F --> I[Disposition:<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
-G --> I[Disposition<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+G --> I[Disposition:<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
 AI1[[Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
