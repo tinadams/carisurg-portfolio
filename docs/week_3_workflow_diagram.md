@@ -7,7 +7,7 @@ B --> C[Vitals taken<br/>Blood pressure, heart rate,<br/>breathing rate, oxygen 
 
 C --> D[Triage nurse assessment<br/>Nurse reviews symptoms,<br/>history, and vitals]
 
-D --> E{What happens next?}
+D --> E{Triage pathway decision}
 
 E -->|Patient is critical or unstable| F[Immediate care<br/>Patient goes to resuscitation<br/>or urgent care area]
 
