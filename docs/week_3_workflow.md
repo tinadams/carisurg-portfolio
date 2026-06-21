@@ -29,8 +29,8 @@ PRE[ED prepares for expected demand]
 
 AI1 -.-> PRE
 PRE -.-> A
-C -.-> AI2
 C -.-> AI3
+C -.-> AI2
 G -.-> AI4
 
 C1([Constraint: Patient information may be hard to find<br/>Files and patient location may not be visible in one place])
