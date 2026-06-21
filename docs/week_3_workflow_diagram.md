@@ -9,9 +9,9 @@ C --> D[Triage nurse assessment<br/>Nurse reviews symptoms,<br/>history, and vit
 
 D --> E{Triage pathway decision}
 
-E -->|Patient is critical or unstable| F[Immediate care<br/>Patient goes to resuscitation<br/>or urgent care area]
+E -->|Patient is critical or unstable| F[Immediate care - Patient goes to resuscitation<br/>or urgent care area]
 
-E -->|Patient needs more ED assessment| G[Care area or waiting area<br/>Patient waits for ED clinician review]
+E -->|Patient needs more ED assessment| G[Care area or waiting area - Patient waits for ED clinician review]
 
 E -->|Patient appears lower risk| H[Patient receives lower-acuity assessment<br/>and treatment if needed]
 
