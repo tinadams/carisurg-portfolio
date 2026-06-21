@@ -19,11 +19,11 @@ E -->|After ED review| I[Final outcome<br/>Patient may be discharged,<br/>admitt
 
 AI1[[Plug-in 1 · Before the shift<br/>Patient arrival forecast<br/><br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
-AI2[[Plug-in 2 · Vitals recorded<br/>Triage priority second check<br/><br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: second-check alert with reason<br/>Human action: triage nurse compares alert with their own assessment]]
+AI2[[Plug-in 2 · AI Triage suggestion<br/><br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: Triage level recommendation with reason<br/>Human action: triage nurse compares alert with their own assessment]]
 
-AI3[[Plug-in 3 · End of triage<br/>Admission-likelihood flag<br/><br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: likely admission, observation, transfer, or discharge risk flag<br/>Human action: nurse or charge nurse starts earlier escalation or bed planning]]
+AI3[[Plug-in 3 · Admission-likelihood flag<br/><br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: likely admission, observation, transfer, or discharge flag<br/>Human action: nurse starts earlier escalation, transfer or bed planning]]
 
-AI4[[Plug-in 4 · Waiting area<br/>Reassessment safety net<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: reassessment reminder for higher-risk waiting patients<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
+AI4[[Plug-in 4 · Reassessment safety net<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: reassessment reminder for higher-risk waiting patients<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
 
 PRE[ED prepares for expected demand]
 
@@ -33,15 +33,15 @@ C -.-> AI3
 C -.-> AI2
 G -.-> AI4
 
-C1([Constraint: Patient information may be hard to find<br/>Files and patient location may not be visible in one place])
+C1([Constraint: Historical patient records may be incomplete or difficult to compile, which could limit the quality and size of the dataset available for training the prediction model.])
 
-C2([Constraint: Nurses are already busy<br/>Extra clicks or too many alerts may be ignored])
+C2([Constraint: Extra clicks or too many alerts may be ignored in busy periods])
 
-C3([Constraint: Bed shortages still matter<br/>Predicting admission risk does not create inpatient beds])
+C3([Constraint: Bed shortages still exist<br/>Predicting admission risk does not create more inpatient beds])
 
 AI2 -. must support, not replace .-> C2
 AI3 -. must connect to bed planning .-> C3
-AI4 -. must fit real reassessment workflow .-> C2
+AI4 -. must not add extra unnecessary work.-> C2
 
 classDef process fill:#ffffff,stroke:#1f4e79,stroke-width:1.5px,color:#111;
 classDef decision fill:#fff8e6,stroke:#b36b00,stroke-width:1.5px,color:#111;
