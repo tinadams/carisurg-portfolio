@@ -15,7 +15,7 @@ E -->|Patient needs more ED assessment| G[Care area or waiting area<br/>Patient 
 
 E -->|Patient appears lower risk| H[Patient receives lower-acuity assessment<br/>and treatment if needed]
 
-H --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+H --> I[Disposition<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
 F --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
