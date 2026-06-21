@@ -13,9 +13,9 @@ E -->|Patient is critical or unstable| F[Immediate care<br/>Patient goes to resu
 
 E -->|Patient needs more ED assessment| G[Care area or waiting area<br/>Patient waits for ED clinician review]
 
-E -->|Patient appears lower risk| H[Fast track or minor care<br/>Patient goes to a lower-acuity pathway]
+E -->|Patient appears lower risk| H[Fast track or minor care<br/>Patient receives lower-acuity assessment<br/>and treatment if needed]
 
-E -->|After ED review| I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+H --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
 AI1[[Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
@@ -32,6 +32,7 @@ PRE --> A
 D -.-> AI3
 C -.-> AI2
 G -.-> AI4
+H -.-> AI4
 
 C1([Constraint: Historical patient records may be incomplete or difficult to compile, which could limit the quality and size of the dataset available for training the prediction model.])
 
