@@ -1,7 +1,7 @@
 ```mermaid
 flowchart TD
 
-A[Patient arrival<br/>Walk-in or ambulance] --> B[Registration<br/>Nurse records patient details<br/>and reason for visit]
+A[Patient arrival<br/>Walk-in or ambulance] --> B[Registration<br/>Nurse records patient demographics<br/>and reason for visit]
 
 B --> C[Vitals taken<br/>Blood pressure, heart rate,<br/>breathing rate, oxygen level,<br/>temperature, and pain score]
 
@@ -42,7 +42,7 @@ C3([Constraint: Bed shortages still exist<br/>Predicting admission risk does not
 AI1 -.-> C1
 AI2 -. must support, not replace .-> C2
 AI3 -. must connect to bed planning .-> C3
-AI4 -. must not add extra unnecessary work.-> C2
+AI4 -. must not add extra unnecessary work .-> C2
 
 classDef process fill:#ffffff,stroke:#1f4e79,stroke-width:1.5px,color:#111;
 classDef decision fill:#fff8e6,stroke:#b36b00,stroke-width:1.5px,color:#111;
