@@ -28,7 +28,7 @@ AI4[[Plug-in 4 · Reassessment flag<br/><br/>In: triage data, initial vitals, wa
 PRE[ED prepares for expected demand]
 
 AI1 -.-> PRE
-PRE -.-> A
+PRE --> A
 C -.-> AI3
 C -.-> AI2
 G -.-> AI4
