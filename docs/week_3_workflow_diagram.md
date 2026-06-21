@@ -21,13 +21,13 @@ F --> I[Disposition:<br/>Patient may be discharged,<br/>admitted, observed, or t
 
 G --> I[Disposition:<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
-AI1[[Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
+AI1[[AI Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
-AI2[[Plug-in 2: AI Triage result<br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: Triage level recommendation with reason<br/>Human action: triage nurse compares alert with their own assessment, AI result acts as second opinion]]
+AI2[[AI Plug-in 2: AI Triage result<br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: Triage level recommendation with reason<br/>Human action: triage nurse compares alert with their own assessment, AI result acts as second opinion]]
 
-AI3[[Plug-in 3: Admission-likelihood flag<br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: admission prediction, observation, transfer, or discharge flag<br/>Human action: nurse starts earlier escalation, transfer or bed planning]]
+AI3[[AI Plug-in 3: Admission-likelihood flag<br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: admission prediction, observation, transfer, or discharge flag<br/>Human action: nurse starts earlier escalation, transfer or bed planning]]
 
-AI4[[Plug-in 4: Waiting-area reassessment flag<br/>In: triage data, first vitals, wait time, age, symptoms, and any repeat vitals<br/>Out: alert if the patient may be getting worse while waiting<br/>Human action: nurse repeats vitals, reassesses, or escalates to a clinician]]
+AI4[[AI Plug-in 4: Waiting-area reassessment flag<br/>In: triage data, first vitals, wait time, age, symptoms, and any repeat vitals<br/>Out: alert if the patient may be getting worse while waiting<br/>Human action: nurse repeats vitals, reassesses, or escalates to a clinician]]
 
 PRE[ED prepares for expected demand]
 
