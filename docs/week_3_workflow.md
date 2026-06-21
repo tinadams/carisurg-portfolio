@@ -23,7 +23,7 @@ AI2[[Plug-in 2 · AI Triage suggestion<br/><br/>In: complaint, vitals, pain scor
 
 AI3[[Plug-in 3 · Admission-likelihood flag<br/><br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: likely admission, observation, transfer, or discharge flag<br/>Human action: nurse starts earlier escalation, transfer or bed planning]]
 
-AI4[[Plug-in 4 · Reassessment safety net<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: reassessment reminder for higher-risk waiting patients<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
+AI4[[Plug-in 4 · Reassessment flag<br/><br/>In: triage data, initial vitals, wait time, age, symptoms, repeat vitals if available<br/>Out: reassessment reminder for higher-risk waiting patients<br/>Human action: nurse repeats vitals, reassesses, or escalates]]
 
 PRE[ED prepares for expected demand]
 
