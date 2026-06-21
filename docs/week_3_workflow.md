@@ -17,7 +17,7 @@ E -->|Patient appears lower risk| H[Fast track or minor care<br/>Patient goes to
 
 E -->|After ED review| I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
-AI1[[Plug-in 1 · Before the shift<br/>Patient arrival forecast<br/><br/>In: past ED arrivals, day, time, season, holidays, weather<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, space, fast-track, and beds]]
+AI1[[Plug-in 1 · Before the shift<br/>Patient arrival forecast<br/><br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
 AI2[[Plug-in 2 · After vitals recorded<br/>Triage priority second check<br/><br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: second-check alert with reason<br/>Human action: triage nurse compares alert with their own assessment]]
 
