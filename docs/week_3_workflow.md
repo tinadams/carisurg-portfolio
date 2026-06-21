@@ -29,7 +29,7 @@ PRE[ED prepares for expected demand]
 
 AI1 -.-> PRE
 PRE -.-> A
-D -.-> AI2
+C -.-> AI2
 D -.-> AI3
 G -.-> AI4
 
