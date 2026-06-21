@@ -39,7 +39,7 @@ C2([Constraint: Extra clicks or too many alerts may be ignored in busy periods])
 
 C3([Constraint: Bed shortages still exist<br/>Predicting admission risk does not create more inpatient beds])
 
-AI1 -.-> C2
+AI1 -.-> C1
 AI2 -. must support, not replace .-> C2
 AI3 -. must connect to bed planning .-> C3
 AI4 -. must not add extra unnecessary work.-> C2
