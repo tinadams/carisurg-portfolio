@@ -19,7 +19,7 @@ E -->|After ED review| I[Final outcome<br/>Patient may be discharged,<br/>admitt
 
 AI1[[Plug-in 1 · Before the shift<br/>Patient arrival forecast<br/><br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
-AI2[[Plug-in 2 · After vitals recorded<br/>Triage priority second check<br/><br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: second-check alert with reason<br/>Human action: triage nurse compares alert with their own assessment]]
+AI2[[Plug-in 2 · Vitals recorded<br/>Triage priority second check<br/><br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: second-check alert with reason<br/>Human action: triage nurse compares alert with their own assessment]]
 
 AI3[[Plug-in 3 · End of triage<br/>Admission-likelihood flag<br/><br/>In: age, complaint, vitals, arrival mode, acuity score, basic labs if available<br/>Out: likely admission, observation, transfer, or discharge risk flag<br/>Human action: nurse or charge nurse starts earlier escalation or bed planning]]
 
@@ -30,7 +30,7 @@ PRE[ED prepares for expected demand]
 AI1 -.-> PRE
 PRE -.-> A
 C -.-> AI2
-D -.-> AI3
+C -.-> AI3
 G -.-> AI4
 
 C1([Constraint: Patient information may be hard to find<br/>Files and patient location may not be visible in one place])
