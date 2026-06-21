@@ -13,7 +13,7 @@ E -->|Patient is critical or unstable| F[Immediate care<br/>Patient goes to resu
 
 E -->|Patient needs more ED assessment| G[Care area or waiting area<br/>Patient waits for ED clinician review]
 
-E -->|Patient appears lower risk| H[lower-acuity care<br/>Patient receives lower-acuity assessment<br/>and treatment if needed]
+E -->|Patient appears lower risk| H[Patient receives lower-acuity assessment<br/>and treatment if needed]
 
 H --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
