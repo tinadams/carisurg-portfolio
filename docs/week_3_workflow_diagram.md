@@ -17,6 +17,10 @@ E -->|Patient appears lower risk| H[lower-acuity care<br/>Patient receives lower
 
 H --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
 
+F --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+
+G --> I[Final outcome<br/>Patient may be discharged,<br/>admitted, observed, or transferred]
+
 AI1[[Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
 AI2[[Plug-in 2: AI Triage result<br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: Triage level recommendation with reason<br/>Human action: triage nurse compares alert with their own assessment, AI result acts as second opinion]]
