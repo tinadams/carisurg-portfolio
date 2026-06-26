@@ -1,8 +1,6 @@
-# Risk Register: AI-Assisted ED Triage / Admission-Risk Tool
+# Risk Register: AI-Assisted ED Triage for High-Risk Patient Identification
 
-## Project Context
-
-This project proposes an AI-assisted emergency department triage tool that flags patients who may be at higher risk of admission or clinical deterioration. The tool is intended to support triage nurses, not replace their clinical judgment.
+This risk register identifies the main technical, operational, ethical, and equity risks that could affect safe implementation of an AI tool, along with practical mitigations and measurable signals of success.
 
 ## Risk Register
 
