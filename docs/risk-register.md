@@ -23,7 +23,7 @@ This risk register identifies the main technical, operational, ethical, and equi
 
 ### 1. Distribution Shift in Caribbean ED
 
-The biggest risk is that the model may perform differently in a Caribbean emergency department than it did in the setting where it was trained. In simple terms, the model may not fully understand the local patient population, staffing patterns, documentation habits, seasonal surges, or bed constraints.
+The biggest risk is that the model may perform differently in a Caribbean emergency department than it did in the setting where it was trained. The model may not fully understand the local patient population, staffing patterns, documentation habits, seasonal surges, or bed constraints.
 
 This matters because triage is high-stakes. If the model misses a high-risk patient, that patient may wait too long before reassessment. The mitigation is to test the model on local or locally similar ED data before live use. The signal of success is that the model continues to catch high-risk patients at an acceptable rate during the pilot.
 
