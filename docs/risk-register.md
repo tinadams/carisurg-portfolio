@@ -39,6 +39,6 @@ The third major risk is that the AI may work better for some patients than other
 
 This matters because an AI tool could unintentionally widen existing health inequalities. The mitigation is to test performance across patient groups before and during the pilot. The signal of success is that the AI is checked across different patient groups, and any major difference in performance is fixed before the tool is used more widely.
 
-## 5. Residual Risk
+## Residual Risk
 
 Even if the AI tool works well during testing, it cannot solve larger ED problems such as bed shortages, staff shortages, incomplete records, or delayed inpatient transfers. For this reason, the tool should be used as support for earlier risk recognition and planning, not as a complete solution to overcrowding or triage delays.
