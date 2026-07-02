@@ -13,7 +13,7 @@ E -->|Patient is critical or unstable| F[Immediate care:<br/>Patient goes to res
 
 E -->|Patient needs more ED assessment| G[Care area or waiting area:<br/>Patient waits for ED clinician review]
 
-E -->|Patient appears lower risk| H[Patient receives lower-acuity assessment<br/>and treatment if needed]
+E -->|Patient appears lower risk| H[Patient receives non-urgent assessment<br/>and treatment if needed]
 
 I[Disposition:<br/>Discharged, admitted,<br/>observed, or transferred]
 F --> I
@@ -21,7 +21,7 @@ G --> I
 H --> I
 
 
-AI1[[AI Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc..<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
+AI1[[AI Plug-in 1: Patient arrival forecast<br/>In: past ED arrivals, day, time, season, holidays, weather, etc.<br/>Out: expected patient volume by hour or shift<br/>Human action: charge nurse prepares staffing, resources and beds]]
 
 AI2[[AI Plug-in 2: Main proposal focus - AI triage support<br/>In: complaint, vitals, pain score, age, arrival mode, risk factors<br/>Out: Triage level recommendation with reason<br/>Human action: triage nurse compares alert with their own assessment, AI result acts as second opinion]]
 
