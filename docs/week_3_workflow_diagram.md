@@ -35,7 +35,6 @@ AI1 -.-> PRE
 PRE --> A
 D -.-> AI3
 C -.-> AI2
-AI2 -.-> E
 G -.-> AI4
 H -.-> AI4
 
