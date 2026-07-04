@@ -1,0 +1,90 @@
+# Week 5 Feasibility Memo Outline
+
+## 1. One-sentence verdict
+
+Initial verdict: The Mercer ED dataset appears suitable for a Week 6 baseline triage model, provided leakage columns, sparse chief complaint flags, clinically implausible values, and Caribbean external-validity limits are handled carefully.
+
+## 2. Dataset summary
+
+- Dataset: `yaleemmlc_admissionprediction_triage.csv`
+- Size: 55,121 ED encounters and 225 columns
+- Target: ESI triage level
+- Main feature groups:
+  - Demographics
+  - Triage vital signs
+  - Chief complaint flags
+  - Visit outcome/disposition fields
+
+Early ESI distribution from profiling:
+- ESI 1: very rare
+- ESI 2 and ESI 3: most common groups
+- ESI 4 and ESI 5: lower-acuity groups
+
+## 3. Top 3 quality concerns
+
+### Concern 1: Sparse chief complaint flags
+
+149 out of 200 chief complaint columns appear in less than 0.5% of encounters. These rare flags may be unstable as model predictors because the model has very few examples to learn from.
+
+Planned action: Consider grouping rare complaints, excluding extremely sparse flags, or interpreting them cautiously during Week 6 modelling.
+
+### Concern 2: Outcome leakage risk
+
+Some columns, such as `disposition` or `previousdispo`, may contain information known after triage or after the ED visit. These could accidentally give the model information it would not have at arrival.
+
+Planned action: Exclude leakage-prone outcome/disposition columns from model inputs before Week 6.
+
+### Concern 3: Representativeness and external validity
+
+The dataset may not fully reflect a Caribbean ED population, workflow, staffing pattern, or resource setting. A model that performs well on this dataset may not automatically be safe or useful in a Caribbean ED.
+
+Planned action: Treat Week 6 modelling as a baseline feasibility test only. Any clinical use would require local validation.
+
+## 4. Top 3 reasons to proceed
+
+### Reason 1: The dataset has a real triage target
+
+The dataset includes ESI triage level, which is the clinical outcome needed for supervised triage modelling.
+
+### Reason 2: Key structured fields appear complete
+
+Initial profiling showed no missing oxygen saturation values and no missingness in the checked structured columns. This supports moving forward with baseline modelling.
+
+### Reason 3: Several features show clinically sensible associations with acuity
+
+Early correlations suggest that some vitals and chief complaints relate to ESI in expected ways. Examples include oxygen saturation, respiratory rate, heart rate, glucose, chest pain, shortness of breath, altered mental status, syncope, and weakness.
+
+## 5. Caveats
+
+- ESI 1 patients are rare, so the model may struggle to learn patterns for the sickest patients.
+- Correlations are associations only; they do not prove causation or final model importance.
+- Temperature is recorded in Fahrenheit and must not be interpreted as Celsius.
+- Many chief complaint flags are sparse and may be unstable predictors.
+- Outcome/disposition columns should be reviewed carefully to avoid leakage.
+- The dataset requires local validation before any use in a Caribbean ED setting.
+
+## 6. Early top-10 feature shortlist ideas
+
+These are early candidates for Week 6 modelling, based on clinical sense and simple correlation with ESI. They are not proven final predictors.
+
+| Rank | Feature | Reason for inclusion |
+|---:|---|---|
+| 1 | `triage_vital_o2` | Oxygen saturation is clinically important for identifying respiratory compromise and showed the strongest vital correlation with ESI. |
+| 2 | `triage_vital_rr` | Respiratory rate can rise with distress, sepsis, pain, or respiratory illness. |
+| 3 | `triage_vital_hr` | Heart rate can reflect shock, pain, fever, anxiety, dehydration, or acute illness. |
+| 4 | `triage_glucose` | Abnormal glucose can indicate metabolic instability and may influence urgency. |
+| 5 | `cc_chestpain` | Chest pain is a red-flag ED complaint and was associated with lower ESI / higher acuity. |
+| 6 | `cc_shortnessofbreath` | Shortness of breath is clinically urgent and was associated with lower ESI / higher acuity. |
+| 7 | `cc_suicidal` | Suicidal ideation can require urgent safety assessment and was associated with lower ESI. |
+| 8 | `cc_alteredmentalstatus` | Altered mental status is a major red flag for serious illness or neurological compromise. |
+| 9 | `cc_syncope` | Syncope may indicate cardiac, neurological, or circulatory risk. |
+| 10 | `cc_weakness` | Weakness can be non-specific but may reflect infection, stroke, metabolic problems, or frailty. |
+
+## 7. Evidence to attach later
+
+- Missingness table or heatmap
+- ESI distribution plot
+- Vitals distribution plots
+- Chief complaint sparsity summary
+- Outlier report for vitals
+- Issues table with planned actions
