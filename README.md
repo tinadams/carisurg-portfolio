@@ -6,7 +6,9 @@
 
 This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage tool in a Caribbean context, where triage decisions often rely on manual clinical judgement.
 
-The project currently uses de-identified Mercer General emergency department data, with plans to expand to a larger dataset as the pilot develops. This repository organises Week 0 notebooks, Week 0 deliverables, and Weeks 1 and 2 research proposal documents in one place for future project work.
+The project began with de-identified Mercer General emergency department data for early clinical data cleaning and triage-rule practice. Later notebooks use a larger emergency department triage dataset, `yaleemmlc_admissionprediction_triage.csv`, which contains 55,121 emergency department arrival records and 225 columns. This larger dataset supports exploratory analysis, feasibility assessment, and early machine learning preparation.
+
+This repository organises weekly notebooks, written deliverables, workflow documents, proposals, and feasibility memos in one place for future project work.
 
 ## Purpose
 
@@ -28,20 +30,25 @@ Requires Python 3.x and Jupyter Notebook, JupyterLab, or Google Colab.
 
 ## Usage
 
-The dataset is not included in this repository, you must add it before running the notebooks.
+The datasets are not included in this repository, you must add the relevant dataset before running the notebooks.
 
-All notebooks currently look for the dataset using this file path:
+Earlier notebooks use the Mercer General ED dataset:
 
 ```python
 FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
 ```
 
-This means the CSV file needs to be in the same place where the notebook is being run.
+Later notebooks use the larger triage/admission prediction dataset:
+
+```python
+FILE_PATH = "yaleemmlc_admissionprediction_triage.csv"
+```
+
+This means the relevant CSV file needs to be in the same place where the notebook is being run, unless the file path is updated.
 
 If you are using Google Colab, upload the CSV file into the Colab session before running the notebook.
 
 If you are running the notebooks locally, put the CSV file in the same folder as the notebook, or update the file path if you store it somewhere else.
-
 
 ## Repository Structure
 
@@ -54,13 +61,22 @@ carisurg-portfolio/
 ├── notebooks/
 │   ├── week_0_day_1_clean_gender_column.ipynb
 │   ├── week_0_day_2_clean_fio2_column.ipynb
-│   └── week_0_day_3_data_visualisation.ipynb
+│   ├── week_0_day_3_data_visualisation.ipynb
+│   ├── week_5_Tutorial1_Clinical_Data_Literacy_STUDENT.ipynb
+│   ├── week_5_Tutorial2_Data_Profiling_STUDENT.ipynb
+│   └── week_5_Tutorial3_Exploratory_Visualisation_STUDENT.ipynb
 ├── docs/
+│   ├── risk-register.md
 │   ├── week_0_day_4_Vital_Sign_Description_(BP).pdf
 │   ├── week_0_day_5_Vital_Sign_Description_(SpO2).pdf
 │   ├── week_0_day_6_Triage_Pseudocode.pdf
-│   ├── week_1_proposal.pdf
-│   └── week_2_proposal.pdf
+│   ├── week_1_Proposal.pdf
+│   ├── week_2_Proposal.pdf
+│   ├── week_3_Workflow_Diagram.md
+│   ├── week_3_proposal.pdf
+│   ├── week_4_ethics_risk_interim.pdf
+│   ├── week_5_Exploration_and_Feasibility_Memo_FINAL.pdf
+│   └── week_5_Exploration_and_Feasibility_Memo_OUTLINE.pdf
 ├── data/
 │   └── README.md
 └── src/
@@ -69,9 +85,9 @@ carisurg-portfolio/
 
 ## Folder Guide
 
-* `notebooks/` contains Week 0 Jupyter notebooks for clinical data cleaning and visualisation.
-* `docs/` contains Week 0 deliverables and Weeks 1 and 2 research proposal documents.
-* `data/` is reserved for future dataset storage. The dataset is not currently included in this repository.
+* `notebooks/` contains Jupyter notebooks for clinical data cleaning, data literacy, data profiling, exploratory visualisation, and early machine learning preparation.
+* `docs/` contains Week 0 deliverables, research proposals, workflow documentation, ethics/risk work, and the Week 5 exploration and feasibility memo.
+* `data/` is reserved for dataset instructions and future dataset storage. The datasets are not currently included in this repository.
 * `src/` is reserved for reusable Python modules and scripts that may be developed later in the program.
 * `requirements.txt` lists the Python libraries needed to run the notebooks.
 
