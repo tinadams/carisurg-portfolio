@@ -6,7 +6,9 @@
 
 This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage tool in a Caribbean context, where triage decisions often rely on manual clinical judgement.
 
-The project currently uses de-identified Mercer General emergency department data and emergency department triage data for exploratory analysis, feasibility assessment, and early machine learning preparation. This repository organises weekly notebooks, written deliverables, workflow documents, proposals, and feasibility memos in one place for future project work.
+The project began with de-identified Mercer General emergency department data for early clinical data cleaning and triage-rule practice. Later notebooks use a larger emergency department triage dataset, `yaleemmlc_admissionprediction_triage.csv`, which contains 55,121 emergency department arrival records and 225 columns. This larger dataset supports exploratory analysis, feasibility assessment, and early machine learning preparation.
+
+This repository organises weekly notebooks, written deliverables, workflow documents, proposals, and feasibility memos in one place for future project work.
 
 ## Purpose
 
@@ -28,15 +30,15 @@ Requires Python 3.x and Jupyter Notebook, JupyterLab, or Google Colab.
 
 ## Usage
 
-The dataset is not included in this repository, you must add it before running the notebooks.
+The datasets are not included in this repository, you must add the relevant dataset before running the notebooks.
 
-Some earlier notebooks use the Mercer General ED dataset:
+Earlier notebooks use the Mercer General ED dataset:
 
 ```python
 FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
 ```
 
-Some later notebooks may use the larger triage/admission prediction dataset:
+Later notebooks use the larger triage/admission prediction dataset:
 
 ```python
 FILE_PATH = "yaleemmlc_admissionprediction_triage.csv"
@@ -83,7 +85,7 @@ carisurg-portfolio/
 
 ## Folder Guide
 
-* `notebooks/` contains Jupyter notebooks for clinical data cleaning, data literacy, data profiling, and exploratory visualisation.
+* `notebooks/` contains Jupyter notebooks for clinical data cleaning, data literacy, data profiling, exploratory visualisation, and early machine learning preparation.
 * `docs/` contains Week 0 deliverables, research proposals, workflow documentation, ethics/risk work, and the Week 5 exploration and feasibility memo.
 * `data/` is reserved for dataset instructions and future dataset storage. The datasets are not currently included in this repository.
 * `src/` is reserved for reusable Python modules and scripts that may be developed later in the program.
