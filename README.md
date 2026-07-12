@@ -6,7 +6,7 @@
 
 This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage tool in a Caribbean context, where triage decisions often rely on manual clinical judgement.
 
-The project began with de-identified Mercer General emergency department data for early clinical data cleaning and triage-rule practice. Later notebooks use a larger emergency department triage dataset, `yaleemmlc_admissionprediction_triage.csv`, which contains 55,121 emergency department arrival records and 225 columns. This larger dataset supports exploratory analysis, feasibility assessment, and early machine learning preparation.
+The project began with de-identified Mercer General emergency department data for early clinical data cleaning and triage-rule practice. Later notebooks use a larger emergency department triage dataset, `yaleemmlc_admissionprediction_triage.csv`, which contains 55,121 emergency department arrival records and 225 columns. This larger dataset supports exploratory analysis, feasibility assessment, and early machine learning preparation. Initial baseline models were developed using logistic regression and a decision tree, with logistic regression performing best overall.
 
 This repository organises weekly notebooks, written deliverables, workflow documents, proposals, and feasibility memos in one place for future project work.
 
@@ -52,7 +52,7 @@ If you are running the notebooks locally, put the CSV file in the same folder as
 
 ## Repository Structure
 
-```text
+```
 carisurg-portfolio/
 ├── README.md
 ├── LICENSE
@@ -64,7 +64,9 @@ carisurg-portfolio/
 │   ├── week_0_day_3_data_visualisation.ipynb
 │   ├── week_5_Tutorial1_Clinical_Data_Literacy_STUDENT.ipynb
 │   ├── week_5_Tutorial2_Data_Profiling_STUDENT.ipynb
-│   └── week_5_Tutorial3_Exploratory_Visualisation_STUDENT.ipynb
+│   ├── week_5_Tutorial3_Exploratory_Visualisation_STUDENT.ipynb
+│   ├── week_6_Tutorial2_Implement_LR_and_DT_STUDENT.ipynb
+│   └── week_6_Tutorial3_Model_Evaluation_STUDENT.ipynb
 ├── docs/
 │   ├── risk-register.md
 │   ├── week_0_day_4_Vital_Sign_Description_(BP).pdf
@@ -76,7 +78,10 @@ carisurg-portfolio/
 │   ├── week_3_proposal.pdf
 │   ├── week_4_ethics_risk_interim.pdf
 │   ├── week_5_Exploration_and_Feasibility_Memo_FINAL.pdf
-│   └── week_5_Exploration_and_Feasibility_Memo_OUTLINE.pdf
+│   ├── week_5_Exploration_and_Feasibility_Memo_OUTLINE.pdf
+│   ├── Baseline_Model_Report.pdf
+│   ├── logistic_regression_confusion_matrix.png
+│   └── decision_tree_confusion_matrix.png
 ├── data/
 │   └── README.md
 └── src/
