@@ -68,7 +68,7 @@ carisurg-portfolio/
 │   ├── week_6_Tutorial2_Implement_LR_and_DT_STUDENT.ipynb
 │   └── week_6_Tutorial3_Model_Evaluation_STUDENT.ipynb
 ├── docs/
-│   ├── risk-register.md
+│   ├── risk_register.md
 │   ├── week_0_day_4_Vital_Sign_Description_(BP).pdf
 │   ├── week_0_day_5_Vital_Sign_Description_(SpO2).pdf
 │   ├── week_0_day_6_Triage_Pseudocode.pdf
