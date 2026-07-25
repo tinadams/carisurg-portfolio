@@ -1,0 +1,17 @@
+data:
+  path: data/yaleemmlc_admissionprediction_triage.csv
+  target_column: acuity
+  test_size: 0.2
+
+training:
+  random_state: 42
+
+model:
+  name: logistic_regression
+  hyperparameters:
+    max_iter: 1000
+    class_weight: balanced
+
+outputs:
+  model_path: outputs/final_model.joblib
+  metrics_path: outputs/final_metrics.json
