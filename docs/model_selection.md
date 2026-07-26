@@ -3,7 +3,7 @@
 This table records the models evaluated during Weeks 6 and 7. Models were
 compared using overall predictive performance, macro-averaged metrics,
 clinically important class recall, computational cost, interpretability,
-and suitability for reproducible deployment.
+and suitability for deployment.
 
 | Selected | Model | Key hyperparameters | Accuracy | Macro precision | Macro recall | Macro F1 | Weighted F1 | ESI 1 recall | ESI 2 recall | Training time | Inference time |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
