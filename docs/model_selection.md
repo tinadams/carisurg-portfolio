@@ -22,7 +22,7 @@ The selected Phase 3 model is **Logistic Regression**.
 
 It was selected because it achieved the highest Week 7 macro-F1 score while
 also offering the strongest balance of predictive performance,
-interpretability, computational efficiency, maintainability, and ease of
+interpretability, computational efficiency and ease of
 deployment.
 
 The Week 7 Logistic Regression achieved a macro-F1 score of 0.492 and trained
