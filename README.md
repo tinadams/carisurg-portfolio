@@ -1,24 +1,27 @@
+````markdown
 # CariSurg Portfolio
 
 **AI-assisted emergency department triage project using synthetic clinical data.**
 
 ## About
 
-This 12-week CariSurg MedTech Pathways pilot focuses on developing an AI-assisted emergency department triage tool in a Caribbean context, where triage decisions often rely on manual clinical judgement.
+This 12-week CariSurg MedTech Pathways pilot explores the development of an AI-assisted emergency department triage tool in a Caribbean context.
 
-The project began with de-identified Mercer General emergency department data for early clinical data-cleaning and triage-rule practice. Later notebooks use a larger emergency department triage dataset, `yaleemmlc_admissionprediction_triage.csv`, which contains 55,121 emergency department arrival records and 225 columns. This larger dataset supports exploratory analysis, feasibility assessment and baseline machine-learning development.
+The project began with de-identified Mercer General emergency department data for early cleaning and triage-rule practice. Later work used `yaleemmlc_admissionprediction_triage.csv`, which contains 55,121 emergency department encounters and 225 columns.
 
-The initial baseline evaluation compared logistic regression and a decision tree against a stratified dummy classifier. Logistic regression performed best overall, although its performance was considerably weaker for the rare ESI Levels 1 and 5. Further analysis examined the ESI Level 1 patients that the model correctly identified and missed.
+The project compared Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, a small MLP neural network and a stacked ensemble. Logistic Regression was selected as the primary Phase 3 model because it achieved the highest macro-F1, trained quickly and was easier to explain than the more complex models.
 
-This repository organises notebooks, written deliverables, workflow documents, proposals, feasibility memos and model-evaluation figures in one place for future project work.
+The final model uses the original eligible triage-time features plus age. Administrative fields and post-triage outcomes are excluded to prevent data leakage.
 
 ## Purpose
 
-The purpose of this repository is to organise the project materials in a clear, reproducible and reviewable format.
+This repository organises notebooks, reusable Python modules, configuration files, written reports and model-evaluation outputs in a clear, reproducible and reviewable format.
+
+The final model pipeline is stored in `src/` and can be run without manually executing notebook cells.
 
 ## Installation
 
-To run the notebooks locally, clone the repository and install the required packages:
+Clone the repository and install the required packages:
 
 ```bash
 git clone https://github.com/tinadams/carisurg-portfolio.git
@@ -26,33 +29,92 @@ cd carisurg-portfolio
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-```
+````
 
-Requires Python 3.x and Jupyter Notebook, JupyterLab or Google Colab.
+Requires Python 3.10 or later.
+
+Jupyter Notebook, JupyterLab or Google Colab is also required to run the exploratory notebooks.
 
 ## Usage
 
-The datasets are not included in this repository, so the relevant dataset must be added before running the notebooks.
+The datasets are not included in this repository.
 
-Earlier notebooks use the Mercer General ED dataset:
+Earlier notebooks use:
 
 ```python
 FILE_PATH = "EmergencyTriageDataset_Reduced_Dirty.csv"
 ```
 
-Later notebooks use the larger triage and admission-prediction dataset:
+Later notebooks and the final model use:
 
 ```python
 FILE_PATH = "yaleemmlc_admissionprediction_triage.csv"
 ```
 
-The relevant CSV file should be placed in the same location where the notebook is being run unless the file path is updated.
+To run the final model, place the larger dataset at:
 
-When using Google Colab, upload the CSV file into the Colab session before running the notebook.
+```text
+data/yaleemmlc_admissionprediction_triage.csv
+```
 
-When running the notebooks locally, place the CSV file in the same folder as the notebook or update the file path to its saved location.
+The path can also be changed in `config.yaml`.
 
-The baseline model notebooks use a stratified 80/20 train-test split with `random_state=42` to support reproducibility.
+From the main repository folder, run:
+
+```bash
+python scripts/train.py
+```
+
+The script will:
+
+1. read the settings from `config.yaml`;
+2. load and clean the dataset;
+3. select the final features;
+4. create a stratified 80/20 train-test split;
+5. train Logistic Regression;
+6. evaluate and save the model.
+
+The output files are saved in:
+
+```text
+outputs/
+├── logistic_regression.joblib
+└── model_results.csv
+```
+
+`logistic_regression.joblib` contains the trained model pipeline.
+
+`model_results.csv` contains the final evaluation results.
+
+## Configuration
+
+The final model settings are stored in `config.yaml`.
+
+```yaml
+seed: 42
+
+data:
+  raw_path: "data/yaleemmlc_admissionprediction_triage.csv"
+  target: "esi"
+  test_size: 0.20
+
+features:
+  use_engineered_features: false
+  include_age: true
+
+model:
+  name: "logistic_regression"
+  max_iter: 1000
+
+outputs:
+  directory: "outputs"
+  model_file: "logistic_regression.joblib"
+  results_file: "model_results.csv"
+```
+
+The seed and train-test split are fixed to support reproducibility.
+
+Engineered clinical features are turned off because the original eligible features plus age produced stronger macro-F1 and ESI 1 recall.
 
 ## Repository Structure
 
@@ -62,70 +124,76 @@ carisurg-portfolio/
 ├── LICENSE
 ├── .gitignore
 ├── requirements.txt
+├── config.yaml
+├── scripts/
+│   └── train.py
+├── src/
+│   ├── __init__.py
+│   ├── data.py
+│   ├── features.py
+│   ├── model.py
+│   └── utils.py
 ├── notebooks/
-│   ├── week_0_day_1_clean_gender_column.ipynb
-│   ├── week_0_day_2_clean_fio2_column.ipynb
-│   ├── week_0_day_3_data_visualisation.ipynb
-│   ├── week_5_Tutorial1_Clinical_Data_Literacy_STUDENT.ipynb
-│   ├── week_5_Tutorial2_Data_Profiling_STUDENT.ipynb
-│   ├── week_5_Tutorial3_Exploratory_Visualisation_STUDENT.ipynb
-│   ├── week_6_Tutorial2_Implement_LR_and_DT_STUDENT.ipynb
-│   └── week_6_Tutorial3_Model_Evaluation_STUDENT.ipynb
+│   └── project notebooks
 ├── docs/
-│   ├── risk_register.md
-│   ├── week_0_day_4_Vital_Sign_Description_(BP).pdf
-│   ├── week_0_day_5_Vital_Sign_Description_(SpO2).pdf
-│   ├── week_0_day_6_Triage_Pseudocode.pdf
-│   ├── week_1_Proposal.pdf
-│   ├── week_2_Proposal.pdf
-│   ├── week_3_Workflow_Diagram.md
-│   ├── week_3_proposal.pdf
-│   ├── week_4_ethics_risk_interim.pdf
-│   ├── week_5_Exploration_and_Feasibility_Memo_FINAL.pdf
-│   ├── week_5_Exploration_and_Feasibility_Memo_OUTLINE.pdf
-│   ├── Baseline_Model_Report_Final.pdf
-│   ├── w6_confusion_logreg.png
-│   ├── w6_confusion_tree.png
-│   └── logreg_recall_all_esi_levels.png
+│   └── reports, memos and model-selection records
 ├── data/
 │   └── README.md
-└── src/
-    └── README.md
+└── outputs/
+    └── generated model and results files
 ```
 
 ## Folder Guide
 
-* `notebooks/` contains Jupyter notebooks for clinical data cleaning, data literacy, data profiling, exploratory visualisation, baseline model implementation and model evaluation.
-* `docs/` contains written deliverables, research proposals, workflow documentation, ethics and risk work, the exploration and feasibility memo, the final baseline model report and model-evaluation figures.
-* `data/` is reserved for dataset instructions and future dataset storage. The datasets are not currently included in this repository.
-* `src/` is reserved for reusable Python modules and scripts that may be developed later in the program.
-* `requirements.txt` lists the Python libraries needed to run the notebooks.
+* `notebooks/` contains the exploratory analysis, baseline models, feature experiments, tuning and error analysis.
+* `docs/` contains reports, proposals, ethics and risk work, the cost-benefit memo and model-selection records.
+* `data/` contains dataset instructions and is the expected location for the CSV file.
+* `src/data.py` loads, checks, cleans and splits the dataset.
+* `src/features.py` selects the final inputs and contains optional engineered features.
+* `src/model.py` builds, trains, evaluates and saves Logistic Regression.
+* `src/utils.py` contains shared helper functions.
+* `scripts/train.py` reads `config.yaml` and runs the full pipeline.
+* `requirements.txt` lists the required Python packages.
 
-## Baseline Model Evaluation
+## Model Evaluation
 
-The baseline evaluation includes:
+The baseline evaluation compared a stratified Dummy Classifier, Logistic Regression and a Decision Tree. Logistic Regression performed best overall but identified only 4 of the 16 ESI Level 1 patients in the test set.
 
-* A stratified dummy classifier used as a random-guess comparison.
-* A logistic regression model with scaled numeric features.
-* A decision tree limited to `max_depth=5`.
-* Accuracy, per-class precision, recall and F1 scores.
-* Macro and weighted F1 comparisons.
-* Confusion matrices for logistic regression and the decision tree.
-* Recall comparisons across all five ESI levels.
-* A closer review of the ESI Level 1 cases that logistic regression correctly identified and missed.
+The final controlled comparison evaluated:
 
-Recall for ESI Level 1 was selected as the primary metric because it measures how many of the most critical patients the model correctly identifies. Overall accuracy can appear strong on an imbalanced dataset even when a model misses patients requiring immediate treatment.
+* Logistic Regression
+* Untuned Random Forest
+* Tuned Random Forest
+* Gradient Boosting
+* Small MLP neural network
+* Stacked Ensemble
 
-Logistic regression performed best overall but correctly identified only 4 of the 16 ESI Level 1 patients in the test set. The decision tree and dummy classifier did not correctly identify any ESI Level 1 patients. These results show that further work is needed before either trained model could be considered for clinical use.
+All models used the same feature set and train-test split.
+
+Logistic Regression achieved:
+
+* Accuracy: `0.683`
+* Macro-F1: `0.508`
+* ESI 1 recall: `0.250`
+* ESI 2 recall: `0.626`
+* ESI 3 recall: `0.770`
+* Training time: approximately `6.2 seconds`
+
+It achieved the highest macro-F1 and required less training time than the more complex models. The tuned Random Forest remains as a comparison model.
+
+These results are experimental and do not support clinical deployment. Further validation, fairness assessment and review of undertriage and overtriage are required.
 
 ## Version Control Workflow
 
-Major edits are made through a feature branch and merged into `main` using a pull request. This keeps the project history clear and supports a more reviewable workflow.
+Major edits are made through a feature branch and merged into `main` using a pull request. This keeps the project history clear and makes changes easier to review.
 
 ## Contributing
 
-This repository is part of the CariSurg Healthcare AI Program coursework. Contributions are not currently expected, but suggestions for improvement are welcome.
+This repository is part of the CariSurg Healthcare AI Program coursework. Contributions are not currently expected, but suggestions are welcome.
 
 ## Licence
 
 This project is licensed under the MIT Licence. See `LICENSE` for details.
+
+```
+```
