@@ -7,22 +7,13 @@ data:
 
 features:
   use_engineered_features: false
+  include_age: true
 
-preprocessing:
-  scale_numeric_features: true
+model:
+  name: "logistic_regression"
+  max_iter: 1000
 
-final_model: "logistic_regression"
-
-models:
-  logistic_regression:
-    max_iter: 1000
-    random_state: 42
-
-  tuned_random_forest:
-    n_estimators: 200
-    max_depth: null
-    min_samples_leaf: 8
-    max_features: null
-    class_weight: "balanced"
-    random_state: 42
-    n_jobs: -1
+outputs:
+  directory: "outputs"
+  model_file: "logistic_regression.joblib"
+  results_file: "model_results.csv"
