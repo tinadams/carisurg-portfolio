@@ -14,17 +14,17 @@ import time
 from pathlib import Path
 from typing import Any
 
-import joblib
 import yaml
+from sklearn.model_selection import train_test_split
 
 # Make repository-root imports work when this file is run directly.
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from src.data import clean_data, load_raw_data
+from src.data import clean_data, load_data
 from src.features import select_final_features
-from src.model import build_model, evaluate_model, split_data
+from src.model import build_model, train_model, evaluate_model, save_model
 
 
 def parse_args() -> argparse.Namespace:
@@ -102,7 +102,7 @@ def main() -> None:
     print(f"Data:   {data_path}")
 
     # 1. Load and clean the raw dataset.
-    raw_df = load_raw_data(data_path)
+    raw_df = load_data(data_path)
     clean_df = clean_data(
         raw_df,
         target=config["data"].get("target", "esi"),
@@ -134,11 +134,12 @@ def main() -> None:
     print(f"Age included:          {'age' in X.columns}")
 
     # 3. Reproduce the Week 6/7 stratified 80/20 split.
-    X_train, X_test, y_train, y_test = split_data(
+    X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
         test_size=float(config["training"].get("test_size", 0.20)),
         random_state=int(config["training"].get("random_state", 42)),
+        stratify=y,
     )
 
     print(f"Training set shape:    {X_train.shape}")
@@ -146,16 +147,14 @@ def main() -> None:
 
     # 4. Build the one pinned model from config.yaml.
     model = build_model(
-        model_name=config["model"]["name"],
-        parameters=config["model"].get("parameters", {}),
-        random_state=int(config["training"].get("random_state", 42)),
+        random_state=int(config["training"].get("random_state", 42))
     )
 
     print(f"Model:                 {config['model']['name']}")
     print("Training model...")
 
     train_start = time.perf_counter()
-    model.fit(X_train, y_train)
+    model = train_model(model, X_train, y_train)
     training_seconds = time.perf_counter() - train_start
 
     # 5. Evaluate using the Week 7 headline metrics.
@@ -186,7 +185,7 @@ def main() -> None:
 
     # 6. Save the fitted pipeline and its audit metrics.
     model_path.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(model, model_path)
+    save_model(model, model_path)
     save_metrics(metrics, metrics_path)
 
     print("\nSaved outputs")
