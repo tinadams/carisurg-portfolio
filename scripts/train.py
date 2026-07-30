@@ -1,199 +1,177 @@
-"""Train the pinned CariSurg emergency-department triage model.
+"""Train and evaluate the final CariSurg Logistic Regression model.
 
 Run from the repository root:
 
-    python scripts/train.py --config config.yaml
+    python scripts/train.py
 """
 
 from __future__ import annotations
 
 import argparse
-import json
 import sys
-import time
 from pathlib import Path
-from typing import Any
 
-import joblib
+import pandas as pd
 import yaml
 
-# Make repository-root imports work when this file is run directly.
+# Allow imports from src/ when this file is run directly.
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from src.data import clean_data, load_raw_data
+from src.data import clean_data, load_data, split_data
 from src.features import select_final_features
-from src.model import build_model, evaluate_model, split_data
+from src.model import build_model, fit_and_evaluate, save_model
 
 
 def parse_args() -> argparse.Namespace:
     """Read command-line arguments."""
     parser = argparse.ArgumentParser(
-        description="Train and evaluate the pinned CariSurg triage model."
+        description="Train the final CariSurg Logistic Regression model."
     )
+
     parser.add_argument(
         "--config",
         type=Path,
-        default=Path("config.yaml"),
+        default=REPO_ROOT / "config.yaml",
         help="Path to the YAML configuration file.",
     )
+
     return parser.parse_args()
 
 
-def load_config(config_path: Path) -> dict[str, Any]:
-    """Load and validate the YAML configuration."""
+def load_config(config_path: Path) -> dict:
+    """Load the project configuration."""
     if not config_path.exists():
-        raise FileNotFoundError(
-            f"Config file not found: {config_path}. "
-            "Run this command from the repository root."
-        )
+        raise FileNotFoundError(f"Config file not found: {config_path}")
 
     with config_path.open("r", encoding="utf-8") as file:
         config = yaml.safe_load(file)
 
     if not isinstance(config, dict):
-        raise ValueError("The config file must contain a YAML mapping.")
-
-    required_sections = {"data", "model", "training", "outputs"}
-    missing_sections = required_sections.difference(config)
-
-    if missing_sections:
-        raise KeyError(
-            "Config is missing required section(s): "
-            + ", ".join(sorted(missing_sections))
-        )
+        raise ValueError("config.yaml must contain a YAML mapping.")
 
     return config
 
 
-def resolve_repo_path(path_value: str | Path) -> Path:
-    """Resolve a config path relative to the repository root."""
+def resolve_path(path_value: str | Path) -> Path:
+    """Resolve paths relative to the repository root."""
     path = Path(path_value)
-    return path if path.is_absolute() else REPO_ROOT / path
 
+    if path.is_absolute():
+        return path
 
-def save_metrics(metrics: dict[str, Any], output_path: Path) -> None:
-    """Save evaluation metrics as JSON."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    serialisable_metrics = {
-        key: value.item() if hasattr(value, "item") else value
-        for key, value in metrics.items()
-    }
-
-    with output_path.open("w", encoding="utf-8") as file:
-        json.dump(serialisable_metrics, file, indent=2)
+    return REPO_ROOT / path
 
 
 def main() -> None:
-    """Run the complete training pipeline."""
+    """Run the complete Logistic Regression training pipeline."""
     args = parse_args()
-    config = load_config(resolve_repo_path(args.config))
+    config = load_config(args.config)
 
-    data_path = resolve_repo_path(config["data"]["raw_path"])
-    model_path = resolve_repo_path(config["outputs"]["model_path"])
-    metrics_path = resolve_repo_path(config["outputs"]["metrics_path"])
+    seed = int(config.get("seed", 42))
 
-    print("=" * 68)
-    print("CariSurg ED Triage — Training Pipeline")
-    print("=" * 68)
-    print(f"Config: {resolve_repo_path(args.config)}")
-    print(f"Data:   {data_path}")
+    data_config = config["data"]
+    model_config = config["model"]
+    output_config = config["outputs"]
 
-    # 1. Load and clean the raw dataset.
-    raw_df = load_raw_data(data_path)
-    clean_df = clean_data(
-        raw_df,
-        target=config["data"].get("target", "esi"),
+    data_path = resolve_path(data_config["raw_path"])
+    output_directory = resolve_path(
+        output_config.get("directory", "outputs")
     )
 
-    print(f"Raw dataset shape:     {raw_df.shape}")
-    print(f"Clean dataset shape:   {clean_df.shape}")
-
-    # 2. Reproduce the final Week 7 feature set:
-    #    original eligible triage-time features + age,
-    #    excluding MAP and engineered features.
-    X, y = select_final_features(
-        clean_df,
-        target=config["data"].get("target", "esi"),
-        include_age=config["data"].get("include_age", True),
+    model_path = output_directory / output_config.get(
+        "model_file",
+        "logistic_regression.joblib",
     )
 
-    expected_feature_count = config["data"].get("expected_feature_count")
-    if (
-        expected_feature_count is not None
-        and X.shape[1] != int(expected_feature_count)
-    ):
-        raise ValueError(
-            "Unexpected feature count. "
-            f"Expected {expected_feature_count}, found {X.shape[1]}."
-        )
+    results_path = output_directory / output_config.get(
+        "results_file",
+        "model_results.csv",
+    )
 
-    print(f"Selected features:     {X.shape[1]}")
-    print(f"Age included:          {'age' in X.columns}")
+    print("=" * 68)
+    print("CariSurg ED Triage — Logistic Regression")
+    print("=" * 68)
+    print(f"Dataset: {data_path}")
+    print(f"Seed:    {seed}")
 
-    # 3. Reproduce the Week 6/7 stratified 80/20 split.
+    # 1. Load the dataset.
+    raw_df = load_data(data_path)
+
+    print(f"Raw dataset shape:   {raw_df.shape}")
+
+    # 2. Apply the final cleaning procedure.
+    clean_df = clean_data(raw_df)
+
+    print(f"Clean dataset shape: {clean_df.shape}")
+
+    # 3. Select the final feature set:
+    # original eligible features plus age.
+    X, y, feature_names = select_final_features(clean_df)
+
+    print(f"Selected features:   {len(feature_names)}")
+    print(f"Age included:        {'age' in feature_names}")
+
+    # 4. Create the reproducible stratified 80/20 split.
     X_train, X_test, y_train, y_test = split_data(
         X,
         y,
-        test_size=float(config["training"].get("test_size", 0.20)),
-        random_state=int(config["training"].get("random_state", 42)),
+        test_size=float(data_config.get("test_size", 0.20)),
+        random_state=seed,
     )
 
-    print(f"Training set shape:    {X_train.shape}")
-    print(f"Test set shape:        {X_test.shape}")
+    print(f"Training set shape:  {X_train.shape}")
+    print(f"Test set shape:      {X_test.shape}")
 
-    # 4. Build the one pinned model from config.yaml.
-    model = build_model(
-        model_name=config["model"]["name"],
-        parameters=config["model"].get("parameters", {}),
-        random_state=int(config["training"].get("random_state", 42)),
-    )
+    # 5. Confirm that Logistic Regression is selected.
+    model_name = model_config.get("name", "logistic_regression")
 
-    print(f"Model:                 {config['model']['name']}")
-    print("Training model...")
+    if model_name != "logistic_regression":
+        raise ValueError(
+            "This training script is pinned to logistic_regression. "
+            f"Found model.name={model_name!r}."
+        )
 
-    train_start = time.perf_counter()
-    model.fit(X_train, y_train)
-    training_seconds = time.perf_counter() - train_start
+    # 6. Build, train and evaluate the model.
+    model = build_model(random_state=seed)
 
-    # 5. Evaluate using the Week 7 headline metrics.
-    metrics = evaluate_model(
+    print("\nTraining Logistic Regression...")
+
+    fitted_model, metrics = fit_and_evaluate(
         model,
+        X_train,
+        y_train,
         X_test,
         y_test,
     )
-    metrics["training_time_seconds"] = training_seconds
-    metrics["n_training_rows"] = int(len(X_train))
-    metrics["n_test_rows"] = int(len(X_test))
-    metrics["n_features"] = int(X.shape[1])
+
+    # 7. Save the model and evaluation results.
+    output_directory.mkdir(parents=True, exist_ok=True)
+
+    save_model(fitted_model, model_path)
+    pd.DataFrame([metrics]).to_csv(results_path, index=False)
 
     print("\nEvaluation results")
     print("-" * 68)
-    print(f"Accuracy:               {metrics['accuracy']:.3f}")
-    print(f"Macro precision:        {metrics['macro_precision']:.3f}")
-    print(f"Macro recall:           {metrics['macro_recall']:.3f}")
-    print(f"Macro F1:               {metrics['macro_f1']:.3f}")
-    print(f"ESI 1 recall:           {metrics['esi_1_recall']:.3f}")
-    print(f"ESI 2 recall:           {metrics['esi_2_recall']:.3f}")
-    print(f"ESI 3 recall:           {metrics['esi_3_recall']:.3f}")
-    print(f"Training time:          {training_seconds:.2f} seconds")
+    print(f"Accuracy:        {metrics['Accuracy']:.3f}")
+    print(f"Macro precision: {metrics['Macro Precision']:.3f}")
+    print(f"Macro recall:    {metrics['Macro Recall']:.3f}")
+    print(f"Macro F1:        {metrics['Macro-F1']:.3f}")
+    print(f"ESI 1 recall:    {metrics['ESI 1 Recall']:.3f}")
+    print(f"ESI 2 recall:    {metrics['ESI 2 Recall']:.3f}")
+    print(f"ESI 3 recall:    {metrics['ESI 3 Recall']:.3f}")
     print(
-        "Mean inference time:   "
-        f"{metrics['mean_inference_time_ms']:.5f} ms/patient"
+        "Training time:  "
+        f"{metrics['Training Time (seconds)']:.2f} seconds"
     )
-
-    # 6. Save the fitted pipeline and its audit metrics.
-    model_path.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(model, model_path)
-    save_metrics(metrics, metrics_path)
 
     print("\nSaved outputs")
     print("-" * 68)
     print(f"Model:   {model_path}")
-    print(f"Metrics: {metrics_path}")
-    print("\nTraining pipeline completed successfully.")
+    print(f"Results: {results_path}")
+    print("\nTraining completed successfully.")
 
 
 if __name__ == "__main__":
