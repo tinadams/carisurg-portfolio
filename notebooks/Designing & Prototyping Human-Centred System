@@ -1,0 +1,291 @@
+````markdown
+# Week 9: Designing & Prototyping Human-Centred System (HCI/HRI) – Interim Submission
+
+# CariPen: AI Smart Triage Station
+
+---
+
+# 1. Problem Space Co-Design Canvas (HCI)
+
+## Problem
+
+ED triage nurses must collect patient information, record vital signs, assess urgency, and document findings while working under time pressure.
+
+---
+
+## User
+
+- ED triage nurse
+
+---
+
+## Inputs
+
+- Patient demographics
+- Chief complaint
+- Medical history
+- Vital signs from the Smart Triage Station
+- Existing EHR information
+
+---
+
+## Outputs
+
+- Predicted ESI level
+- Confidence score
+- Colour-coded urgency alert
+- Explanation of contributing factors
+
+---
+
+## Human Action
+
+The nurse reviews the AI recommendation, performs a clinical assessment, and either:
+
+- Accepts the recommendation
+- Requests additional information
+- Overrides the recommendation
+
+---
+
+# 2. Problem Space Co-Design Canvas (HRI)
+
+## Problem
+
+Collecting patient-reported information and vital signs during triage can increase nurse workload and delay the creation of a complete patient record.
+
+---
+
+## User
+
+- Patient
+- ED nurse
+
+---
+
+## Inputs
+
+- Handwritten symptoms using the Smart Pen
+- Blood pressure
+- Heart rate
+- Oxygen saturation
+- Temperature
+- Weight
+- Existing EHR information
+
+---
+
+## Outputs
+
+- Digital handwriting
+- Structured patient record
+- Vital signs
+- Predicted ESI level
+- Critical alerts
+
+---
+
+## Human Action
+
+The patient writes their symptoms using the Smart Pen and uses the connected vital-sign devices. The nurse reviews all collected information before accepting or overriding the AI recommendation.
+
+---
+
+# 3. Co-Design Canvas: Preferred Implementation
+
+## Preferred Implementation
+
+**CariPen Smart Triage Station**
+
+---
+
+## Problem
+
+Triage nurses must collect patient information, record vital signs, and document findings while assessing urgency in a busy environment.
+
+---
+
+## Ethics
+
+- Protect patient privacy and securely store health data.
+- AI supports, but does not replace, nurse decision-making.
+- Nurses retain final responsibility for assigning the ESI level.
+- AI recommendations should be transparent and explainable.
+
+---
+
+## Environment
+
+The Smart Triage Station is designed for use in the Emergency Department Observation Unit. It should function safely in a busy, noisy environment with high patient volume while remaining simple and accessible for patients of different ages and abilities.
+
+---
+
+## Smart Pen Functions
+
+The Smart Pen acts as both a writing tool and the central link between the patient and the triage system.
+
+The pen can:
+
+- Record handwriting on regular paper.
+- Convert handwriting into structured digital text.
+- Preserve the original handwriting for nurse review.
+- Measure or estimate heart rate using sensors in the grip.
+- Detect grip pressure, tremors, writing speed, pauses, and difficulty following written instructions.
+- Provide an initial skin-temperature reading.
+- Link the patient to connected medical devices.
+- Send all collected information to the correct patient record.
+- Store encrypted information temporarily if the network is unavailable.
+- Provide light or vibration feedback when information has been recorded successfully.
+
+The pen does not independently measure every vital sign. Blood pressure, weight, clinical temperature, and oxygen saturation are collected using validated connected devices such as:
+
+- Wireless blood pressure cuff
+- Digital scale
+- Clinical thermometer
+- Pulse oximeter
+
+These devices send their readings to the Smart Pen or station, which links them to the correct patient record.
+
+The pen therefore acts as the patient’s temporary digital identity and coordinates information from the paper form and connected devices.
+
+---
+
+# 4. Initial Mock-Up Sketch
+
+```text
+                   SMART TRIAGE STATION
+
+ ------------------------------------------------------
+
+               Paper Triage Form
+
+   ___________________________________________
+
+   Name
+
+   Chief Complaint
+
+   Symptoms
+
+   Medical History
+
+   ___________________________________________
+
+                  Smart Pen
+
+        Records handwriting and links
+        all data to the patient record
+
+
+ Connected Devices
+
+ [ Blood Pressure Cuff ]
+
+ [ Pulse Oximeter ]
+
+ [ Thermometer ]
+
+ [ Weight Scale ]
+
+
+             ↓ Uploads Automatically ↓
+
+
+ ------------------------------------------------------
+
+               Nurse Dashboard
+
+ Patient Information
+
+ Handwritten Form and Digital Transcription
+
+ Vital Signs
+
+ Predicted ESI: 2
+
+ Confidence: 91%
+
+ Contributing Factors
+
+ • Chest pain
+ • Heart rate: 126 bpm
+ • SpO₂: 91%
+
+ [ Accept ]
+
+ [ Request More Information ]
+
+ [ Override ]
+
+ ------------------------------------------------------
+````
+
+---
+
+# 5. Notes on System Requirements
+
+## Vision
+
+Develop an AI-assisted triage system that combines handwritten patient information and automatically collected vital signs to support nurses in making faster and more accurate triage decisions.
+
+---
+
+## Inputs
+
+### Patient Information
+
+* Patient demographics
+* Chief complaint
+* Medical history
+* Handwritten symptoms
+* Pain score
+* Existing EHR data
+
+### Smart Pen Data
+
+* Digital handwriting
+* Heart-rate estimate
+* Grip pressure
+* Tremor detection
+* Writing speed and pauses
+* Initial skin-temperature reading
+
+### Connected Device Data
+
+* Blood pressure
+* Heart rate
+* Oxygen saturation
+* Clinical temperature
+* Weight
+
+---
+
+## Outputs
+
+* Digital copy of the patient’s handwriting
+* Structured patient record
+* Predicted ESI level
+* Confidence score
+* Critical alerts
+* Explanation of contributing factors
+* Missing or unreliable data warnings
+* Audit log
+
+---
+
+## Integration Requirements
+
+* Integrates with the hospital Electronic Health Record.
+* Links the Smart Pen to the correct patient using a barcode, wristband, or patient identifier.
+* Receives vital signs from connected medical devices.
+* Links each device reading to the correct patient record.
+* Converts handwriting into structured digital text while preserving the original handwriting.
+* Sends the AI prediction directly to the nurse dashboard.
+* Clearly separates patient-reported information, measured vital signs, and AI-generated recommendations.
+* Allows the nurse to accept, request more information, or override the AI recommendation.
+* Records all predictions and nurse actions in an audit log.
+* Stores patient data securely.
+* Supports a manual workflow if the pen, network, or connected devices fail.
+
+```
+```
