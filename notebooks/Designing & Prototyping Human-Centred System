@@ -111,6 +111,7 @@ Triage nurses must collect patient information, record vital signs, and document
 - AI supports, but does not replace, nurse decision-making.
 - Nurses retain final responsibility for assigning the ESI level.
 - AI recommendations should be transparent and explainable.
+- Include a colour-blind accessibility setting for colour-coded notifications. 
 
 ---
 
@@ -285,7 +286,8 @@ Develop an AI-assisted triage system that combines handwritten patient informati
 * Allows the nurse to accept, request more information, or override the AI recommendation.
 * Records all predictions and nurse actions in an audit log.
 * Stores patient data securely.
-* Supports a manual workflow if the pen, network, or connected devices fail.
+* Supports a manual workflow if the pen, network, or connected devices fail
+* Provides a colour-blind accessibility mode and uses text, symbols, and labels alongside colour-coded alerts.
 
 ```
 ```
